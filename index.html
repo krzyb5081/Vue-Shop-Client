@@ -2,16 +2,24 @@
     <head>
         <meta charset="utf-8" lang="eng">
         <script src="vue.js"></script>
+        <style>
+            .unactive{
+                visibility: hidden;
+            }
+        </style>
     </head>
     <body>
         <noscript>
             <h1>enable javascript to use website</h1>
         </noscript>
         <div id="app">
-            Name: <input type="text" v-model="name">
-            Last Name:  <input type="text" v-model="lastname">
+            <input type="checkbox" v-on:click="setActive()">
+            <div v-bind:class="[appActive ? '' : 'unactive']">
+                Name: {{ name }}
+                Last Name:  {{ lastname }}
 
-            <h1>my full name is {{ getFullName }}</h1>
+                <h1>my full name is {{ name }} {{ lastname }}</h1>
+            </div>
         </div>
 
         <script src="main.js"></script>

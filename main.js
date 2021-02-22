@@ -1,13 +1,22 @@
 var app = new Vue({
     el: '#app',
     data:{
-        name: '',
-        lastname: '',
-        message: 'Hello swiat ffs <3'
+        name: 'gracjan',
+        lastname: 'roztocki',
+        message: 'Hello swiat ffs <3',
+        appActive: false
     },
-    computed:{
+    methods:{
         getFullName: function(){
             return this.name+" "+this.lastname
+        },
+        setActive: function(){
+            if(this.appActive){
+                this.appActive = false
+            }
+            else{
+                this.appActive = true
+            }
         }
     }
 })

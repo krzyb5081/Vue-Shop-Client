@@ -2,7 +2,12 @@
     <head>
         <meta charset="utf-8" lang="eng">
         <script src="vue.js"></script>
+        <script src="vue-router.js"></script>
         <style>
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
             .unactive{
                 visibility: hidden;
             }
@@ -12,16 +17,46 @@
         <noscript>
             <h1>enable javascript to use website</h1>
         </noscript>
-        <div id="app">
-            <input type="checkbox" v-on:click="setActive()">
-            <div v-bind:class="[appActive ? '' : 'unactive']">
-                Name: {{ name }}
-                Last Name:  {{ lastname }}
 
-                <h1>my full name is {{ name }} {{ lastname }}</h1>
+        <div id="app" style="width: 100%; height: 100%; display: grid; grid-template-rows: 15% auto 10%;">
+            <header-template></header-template>
+
+            <div class="main" style="display: grid; grid-template: 100% / 20% auto;">
+
+                <div class="sidebar" style="background-color: #4f4f5f; display: grid; grid-template: auto auto - auto;">
+                    <div style="text-align: center;">
+                        <menu>
+                            <li>baz ty wariacie</li>
+                            <li>jestes tylko ...</li>
+                            <li>ZA BAW KA</li>
+                        </menu>
+                    </div>
+                    <div style="text-align: center;">
+                        <a href="#">idz do sklepu</a><br>
+                        <a href="#">nie wiem no</a><br>
+                        <a href="#">zrob cos ze soba...</a><br>
+                        <a href="#">kup chleb...</a><br>
+                    </div>
+                </div>
+
+                <div class="content" style="background-color: #a5a5b5;">
+                    <input type="checkbox" v-on:click="setActive()">
+                    <div v-bind:class="[appActive ? '' : 'unactive']">
+                        Name: {{ name }}
+                        Last Name:  {{ lastname }}
+
+                        <h1>my full name is {{ name }} {{ lastname }}</h1>
+                    </div>
+                </div>
             </div>
+            
+
+            <footer-template></footer-template>
+            
         </div>
 
+        
+        <script src="basic-templates.js"></script>
         <script src="main.js"></script>
     </body>
 </html>

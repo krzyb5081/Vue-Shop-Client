@@ -16,13 +16,19 @@ Vue.component('header-template',{
 
 Vue.component('sidebar-template',{
     template: `
-    <div class="sidebar" style="background-color: blueviolet; display: grid; grid-template-columns: auto auto;">
+    <div class="sidebar" style="background-color: #6f6f8f; display: grid; grid-template: auto auto - auto;">
         <div style="text-align: center;">
-            <h4>made by: krzyb5081</h4>
+            <menu>
+                <li>baz ty wariacie</li>
+                <li>jestes tylko ...</li>
+                <li>ZA BAW KA</li>
+            </menu>
         </div>
         <div style="text-align: center;">
-            No rights reserved, blah blah, something.<br>
-            Have a good shopping.
+            <a href="#">idz do sklepu</a><br>
+            <a href="#">nie wiem no</a><br>
+            <a href="#">zrob cos ze soba...</a><br>
+            <a href="#">kup chleb...</a><br>
         </div>
     </div>
     `

@@ -8,9 +8,6 @@
                 margin: 0px;
                 padding: 0px;
             }
-            .unactive{
-                visibility: hidden;
-            }
         </style>
     </head>
     <body>
@@ -23,30 +20,10 @@
 
             <div class="main" style="display: grid; grid-template: 100% / 20% auto;">
 
-                <div class="sidebar" style="background-color: #4f4f5f; display: grid; grid-template: auto auto - auto;">
-                    <div style="text-align: center;">
-                        <menu>
-                            <li>baz ty wariacie</li>
-                            <li>jestes tylko ...</li>
-                            <li>ZA BAW KA</li>
-                        </menu>
-                    </div>
-                    <div style="text-align: center;">
-                        <a href="#">idz do sklepu</a><br>
-                        <a href="#">nie wiem no</a><br>
-                        <a href="#">zrob cos ze soba...</a><br>
-                        <a href="#">kup chleb...</a><br>
-                    </div>
-                </div>
+                <sidebar-template></sidebar-template>
 
                 <div class="content" style="background-color: #a5a5b5;">
-                    <input type="checkbox" v-on:click="setActive()">
-                    <div v-bind:class="[appActive ? '' : 'unactive']">
-                        Name: {{ name }}
-                        Last Name:  {{ lastname }}
-
-                        <h1>my full name is {{ name }} {{ lastname }}</h1>
-                    </div>
+                    <router-view></router-view>
                 </div>
             </div>
             

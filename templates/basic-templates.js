@@ -19,6 +19,7 @@ Vue.component('sidebar-template',{
     <div class="sidebar" style="background-color: #6f6f8f; display: grid; grid-template: auto auto - auto;">
         <div style="text-align: center; ">
             <router-link to="/"><button class="btn btn-primary">main page</button></router-link><br/>
+            <router-link to="/shopping"><button class="btn btn-primary">shopping</button></router-link><br/>
             <router-link to="/addProduct"><button class="btn btn-primary">add</button></router-link><br/>
             <router-link to="/show"><button class="btn btn-primary">show</button></router-link><br/>
             <router-link to="/register"><button class="btn btn-primary">register</button></router-link><br/>

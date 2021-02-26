@@ -16,23 +16,15 @@ Vue.component('header-template',{
 
 Vue.component('sidebar-template',{
     template: `
-    <div class="sidebar" style="background-color: #6f6f8f; display: grid; grid-template: auto auto - auto;">
-        <div style="text-align: center; ">
-            <router-link to="/"><button class="btn btn-primary">main page</button></router-link><br/>
-            <router-link to="/shopping"><button class="btn btn-primary">shopping</button></router-link><br/>
-            <router-link to="/addProduct"><button class="btn btn-primary">add</button></router-link><br/>
-            <router-link to="/show"><button class="btn btn-primary">show</button></router-link><br/>
-            <router-link to="/register"><button class="btn btn-primary">register</button></router-link><br/>
-            <router-link to="/login"><button class="btn btn-primary">login</button></router-link><br/>
-            <router-link to="/showShoppingCart"><button class="btn btn-primary">show cart</button></router-link><br/>
-            <router-link to="/showOrders"><button class="btn btn-primary">show orders</button></router-link><br/>
-        </div>
-        <div style="text-align: center;">
-            <a href="#">idz do sklepu</a><br>
-            <a href="#">nie wiem no</a><br>
-            <a href="#">zrob cos ze soba...</a><br>
-            <a href="#">kup chleb...</a><br>
-        </div>
+    <div class="sidebar" style="background-color: #6f6f8f; text-align: center;">
+        <router-link to="/"><button class="btn btn-primary">main page</button></router-link><br/>
+        <router-link to="/shopping"><button class="btn btn-primary">shopping</button></router-link><br/>
+        <router-link to="/addProduct"><button class="btn btn-primary">add</button></router-link><br/>
+        <router-link to="/show"><button class="btn btn-primary">show</button></router-link><br/>
+        <router-link to="/register"><button class="btn btn-primary">register</button></router-link><br/>
+        <router-link to="/login"><button class="btn btn-primary">login</button></router-link><br/>
+        <router-link to="/showShoppingCart"><button class="btn btn-primary">show cart</button></router-link><br/>
+        <router-link to="/showOrders"><button class="btn btn-primary">show orders</button></router-link><br/>
     </div>
     `
 })

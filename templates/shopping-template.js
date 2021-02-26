@@ -4,12 +4,19 @@ Vue.component("shopping-template",{
             <p>{{ data }}</p>
         </div>
     `,
+    name: "shopping-t",
     data: function(){
         return {
-            data: null
+            data: {}
+        }
+    },
+    methods:{
+        getData: async function(){
+            let response = await axios.get('http://localhost:8080/shopping')
+            .then(resp => {this.data = resp.data});
         }
     },
     mounted(){
-        axios.get("localhost:8080/shopping").then(response => {this.data = response});
+        this.getData();
     }
 })

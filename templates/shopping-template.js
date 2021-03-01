@@ -1,7 +1,7 @@
 Vue.component("shopping-template",{
     template:`
         <div>
-            <form v-on:submit="search()" action="#/shopping" method="post">
+            <form v-on:submit="search()" method="post">
                 <input type="text" v-model="searchText" name="searchText" placeholder="product name" />
                 <input type="submit" value="Search" />
             </form>
@@ -22,10 +22,7 @@ Vue.component("shopping-template",{
                     <td> {{product.quantityAvailable}} </td>
                     
                     <td>
-                        <form v-on:submit="addProductToCart(product.id)" action="#" method="post">
-                            <input type="number" v-model="quantity" name="quantity" value="0" />
-                            <input type="submit" value="Add to cart" />
-                        </form>
+                        <add-product-to-cart v-bind:product-id="product.id"></add-product-to-cart>
                     </td>
                 </tr>
             </table>
@@ -34,22 +31,44 @@ Vue.component("shopping-template",{
     data: function(){
         return {
             products: {},
-            searchText: null,
+            searchText: '',
+            productId: null,
             quantity: null
         }
     },
     methods:{
         getProducts: async function(){
             let response = await axios.get('http://localhost:8080/shopping')
-            .then(resp => {this.products = resp});
+            .then(resp => {this.products = resp.data});
         },
-        search: function(){
+        search: async function(){
 
-        },
-        addProductToCart: function(productId){
-            alert("product id: "+productId+" quantity: "+this.quantity)
+            var formData = new FormData();
+            formData.append('searchText', this.searchText);
+
+            let response = await axios.post('http://localhost:8080/shopping', formData)
+            .then(resp => {this.products = resp.data});
         }
     },
+    components: {
+        'addProductToCart':{
+            data: function(){
+                return{
+                    productId: null,
+                    quantity: null
+                }
+            },
+            props:['productIdProp'],
+            template:`
+                <form v-on:submit="addProductToCart()" method="post">
+                    {{productId=productIdProp}}
+                    <input type="number" v-model="quantity" name="quantity" value="0" />
+                    <button>Add to cart</button>
+                </form>
+            `
+        }
+    }
+    ,
     mounted(){
         this.getProducts();
     }

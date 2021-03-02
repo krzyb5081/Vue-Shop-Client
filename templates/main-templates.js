@@ -20,7 +20,6 @@ Vue.component('sidebar-template',{
         <router-link to="/"><button class="btn btn-primary">main page</button></router-link><br/>
         <router-link to="/shopping"><button class="btn btn-primary">shopping</button></router-link><br/>
         <router-link to="/addProduct"><button class="btn btn-primary">add</button></router-link><br/>
-        <router-link to="/show"><button class="btn btn-primary">show</button></router-link><br/>
         <router-link to="/register"><button class="btn btn-primary">register</button></router-link><br/>
         <router-link to="/login"><button class="btn btn-primary">login</button></router-link><br/>
         <router-link to="/showShoppingCart"><button class="btn btn-primary">show cart</button></router-link><br/>

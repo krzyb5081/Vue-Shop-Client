@@ -1,11 +1,6 @@
-Vue.component("shopping-template",{
+Vue.component("show-shopping-cart-template",{
     template:`
         <div>
-            <form @submit.prevent="search()">
-                <input type="text" v-model="searchText" name="searchText" placeholder="product name" />
-                <input type="submit" value="Search" />
-            </form>
-
             <table>
                 <tr>
                     <th>Product name</th>
@@ -38,43 +33,35 @@ Vue.component("shopping-template",{
     },
     methods:{
         getProducts: async function(){
-            let response = await axios.get('http://localhost:8080/shopping')
+            let response = await axios.get('http://localhost:8080/showShoppingCart')
             .then(resp => {this.products = resp.data});
-        },
-        search: async function(){
-
-            var formData = new FormData();
-            formData.append('searchText', this.searchText);
-
-            await axios.post('http://localhost:8080/shopping', formData)
-            .then(resp => {this.products = resp.data});
-
-            this.searchText = null;
         }
     },
     components: {
         'addToCart':{
             data: function(){
                 return{
-                    
+                    productId: null,
                     quantity: null
                 }
             },
-            props:{
-                productId: Number
-            },
+            props:['productIdProp'],
             template:`
                 <div>
-                    <button @click="addToCart()">Add to cart</button>
-                </div>
+                    <form @submit.prevent="changeQuantity()">
+                        {{productId=productIdProp}}
+                        <input type="number" step="1" v-model="quantity">
+                        <input type="submit" >Change amount</button>
+                    </form>
+                </div
             `,
             methods:{
-                addToCart: async function(){
+                changeQuantity: async function(){
                     var formData = new FormData();
                     formData.append('productId', this.productId);
-                    formData.append('quantity', 1);
+                    formData.append('quantity', this.quantity);
 
-                    await axios.post("http://localhost:8080/addProductToCart", formData)
+                    let response = await axios.post("http://localhost:8080/addProductToCart", formData)
                 }
             }
         }
@@ -84,5 +71,3 @@ Vue.component("shopping-template",{
         this.getProducts();
     }
 })
-//<form action="#" th:action="@{/shopping}" method="post">
-//<form action="#" th:action="@{/addProductToCart}" method="post">

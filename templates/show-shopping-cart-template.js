@@ -7,17 +7,18 @@ Vue.component("show-shopping-cart-template",{
                     <th>Description</th>
                     <th>Price</th>
                     <th>Available</th>
-                    <th>Buy</th>
+                    <th>Amount wanted</th>
                 </tr>
                 
                 <tr v-for="product in products">
-                    <td> {{product.name}} </td>
-                    <td> {{product.description}} </td>
-                    <td> {{product.price}} </td>
-                    <td> {{product.quantityAvailable}} </td>
+                    <td> {{product.product.name}} </td>
+                    <td> {{product.product.description}} </td>
+                    <td> {{product.product.price}} </td>
+                    <td> {{product.product.quantityAvailable}} </td>
+                    <td> {{product.quantity}} </td>
                     
                     <td>
-                        <add-to-cart v-bind:product-id="product.id"></add-to-cart>
+                        <add-to-cart v-bind:product-id="product.product.id"></add-to-cart>
                     </td>
                 </tr>
             </table>
@@ -33,7 +34,7 @@ Vue.component("show-shopping-cart-template",{
     },
     methods:{
         getProducts: async function(){
-            let response = await axios.get('http://localhost:8080/showShoppingCart')
+            let response = await axios.get('http://localhost:8080/showShoppingCart', {withCredentials: true})
             .then(resp => {this.products = resp.data});
         }
     },
@@ -41,19 +42,19 @@ Vue.component("show-shopping-cart-template",{
         'addToCart':{
             data: function(){
                 return{
-                    productId: null,
-                    quantity: null
+                    quantity: Number
                 }
             },
-            props:['productIdProp'],
+            props:{
+                productId: Number
+            },
             template:`
                 <div>
-                    <form @submit.prevent="changeQuantity()">
-                        {{productId=productIdProp}}
+                    <form @submit="changeQuantity()">
                         <input type="number" step="1" v-model="quantity">
-                        <input type="submit" >Change amount</button>
+                        <input type="submit" value="Change amount">
                     </form>
-                </div
+                </div>
             `,
             methods:{
                 changeQuantity: async function(){
@@ -61,7 +62,9 @@ Vue.component("show-shopping-cart-template",{
                     formData.append('productId', this.productId);
                     formData.append('quantity', this.quantity);
 
-                    let response = await axios.post("http://localhost:8080/addProductToCart", formData)
+                    await axios.post("http://localhost:8080/addProductToCart", formData, {withCredentials: true});
+                    
+                    this.$router.push("/showShoppingCart");
                 }
             }
         }

@@ -38,7 +38,7 @@ Vue.component("shopping-template",{
     },
     methods:{
         getProducts: async function(){
-            let response = await axios.get('http://localhost:8080/shopping')
+            let response = await axios.get('http://localhost:8080/shopping', {withCredentials: true})
             .then(resp => {this.products = resp.data});
         },
         search: async function(){
@@ -46,7 +46,7 @@ Vue.component("shopping-template",{
             var formData = new FormData();
             formData.append('searchText', this.searchText);
 
-            await axios.post('http://localhost:8080/shopping', formData)
+            await axios.post('http://localhost:8080/shopping', formData, {withCredentials: true})
             .then(resp => {this.products = resp.data});
 
             this.searchText = null;
@@ -56,7 +56,6 @@ Vue.component("shopping-template",{
         'addToCart':{
             data: function(){
                 return{
-                    
                     quantity: null
                 }
             },
@@ -74,7 +73,7 @@ Vue.component("shopping-template",{
                     formData.append('productId', this.productId);
                     formData.append('quantity', 1);
 
-                    await axios.post("http://localhost:8080/addProductToCart", formData)
+                    await axios.post("http://localhost:8080/addProductToCart", formData, {withCredentials: true})
                 }
             }
         }

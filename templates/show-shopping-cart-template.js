@@ -10,7 +10,7 @@ Vue.component("show-shopping-cart-template",{
                     <th>Amount wanted</th>
                 </tr>
                 
-                <tr v-for="product in products">
+                <tr v-for="product in products" v-bind:product="product" v-bind:key="product.product.id">
                     <td> {{product.product.name}} </td>
                     <td> {{product.product.description}} </td>
                     <td> {{product.product.price}} </td>
@@ -18,7 +18,11 @@ Vue.component("show-shopping-cart-template",{
                     <td> {{product.quantity}} </td>
                     
                     <td>
-                        <add-to-cart v-bind:product-id="product.product.id"></add-to-cart>
+                        <div>
+                            <button @click='changeQuantity(product,"+")'>+</button>
+                            <button @click='changeQuantity(product,"-")'>-</button>
+                            <button @click='removeProduct(product)'>Remove</button>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -27,49 +31,39 @@ Vue.component("show-shopping-cart-template",{
     data: function(){
         return {
             products: {},
-            searchText: '',
-            productId: null,
-            quantity: null
         }
     },
     methods:{
         getProducts: async function(){
             let response = await axios.get('http://localhost:8080/showShoppingCart', {withCredentials: true})
             .then(resp => {this.products = resp.data});
+        },
+        changeQuantity: async function(product, operation){
+
+            if(operation === "-"){
+                product.quantity--;
+            } else if(operation === "+"){
+                product.quantity++;
+            }
+            var formData = new FormData();
+
+            formData.append('productId', parseInt(product.product.id));
+            formData.append('quantity', parseInt(product.quantity));
+
+            await axios.post("http://localhost:8080/addProductToCart", formData, {withCredentials: true});
+
+        },
+        removeProduct: async function(product){
+            var formData = new FormData();
+
+            formData.append('productId', parseInt(product.product.id));
+
+            await axios.post("http://localhost:8080/removeProductFromCart", formData, {withCredentials: true});
+
+            this.products = this.products.filter(prod => prod.product.id !== product.product.id)
+
         }
     },
-    components: {
-        'addToCart':{
-            data: function(){
-                return{
-                    quantity: Number
-                }
-            },
-            props:{
-                productId: Number
-            },
-            template:`
-                <div>
-                    <form @submit="changeQuantity()">
-                        <input type="number" step="1" v-model="quantity">
-                        <input type="submit" value="Change amount">
-                    </form>
-                </div>
-            `,
-            methods:{
-                changeQuantity: async function(){
-                    var formData = new FormData();
-                    formData.append('productId', this.productId);
-                    formData.append('quantity', this.quantity);
-
-                    await axios.post("http://localhost:8080/addProductToCart", formData, {withCredentials: true});
-                    
-                    this.$router.push("/showShoppingCart");
-                }
-            }
-        }
-    }
-    ,
     mounted(){
         this.getProducts();
     }

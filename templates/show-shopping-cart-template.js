@@ -10,19 +10,15 @@ Vue.component("show-shopping-cart-template",{
                     <th>Amount wanted</th>
                 </tr>
                 
-                <tr v-for="product in products" v-bind:product="product" v-bind:key="product.product.id">
-                    <td> {{product.product.name}} </td>
-                    <td> {{product.product.description}} </td>
-                    <td> {{product.product.price}} </td>
-                    <td> {{product.product.quantityAvailable}} </td>
-                    <td> {{product.quantity}} </td>
+                <tr v-for="orderProduct in orderProductList" v-bind:key="orderProduct.product.id">
+                    <td> {{orderProduct.product.name}} </td>
+                    <td> {{orderProduct.product.description}} </td>
+                    <td> {{orderProduct.product.price}} </td>
+                    <td> {{orderProduct.product.quantityAvailable}} </td>
                     
                     <td>
-                        <div>
-                            <button @click='changeQuantity(product,"+")'>+</button>
-                            <button @click='changeQuantity(product,"-")'>-</button>
-                            <button @click='removeProduct(product)'>Remove</button>
-                        </div>
+                        <input type = "number" @change='changeQuantity(orderProduct)' v-model:value='orderProduct.quantity'>
+                        <button @click='removeOrderProduct(orderProduct)'>Remove</button>
                     </td>
                 </tr>
             </table>
@@ -30,41 +26,43 @@ Vue.component("show-shopping-cart-template",{
     `,
     data: function(){
         return {
-            products: {},
+            orderProductList: {},
         }
     },
     methods:{
-        getProducts: async function(){
+        getOrderProductList: async function(){
             let response = await axios.get('http://localhost:8080/showShoppingCart', {withCredentials: true})
-            .then(resp => {this.products = resp.data});
+            .then(resp => {this.orderProductList = resp.data});
         },
-        changeQuantity: async function(product, operation){
+        changeQuantity: async function(orderProduct){
 
-            if(operation === "-"){
-                product.quantity--;
-            } else if(operation === "+"){
-                product.quantity++;
+            if(orderProduct.quantity < 1){
+                orderProduct.quantity = 1;
             }
+            if(orderProduct.quantity > orderProduct.product.quantityAvailable){
+                orderProduct.quantity = orderProduct.product.quantityAvailable;
+            }
+            
             var formData = new FormData();
 
-            formData.append('productId', parseInt(product.product.id));
-            formData.append('quantity', parseInt(product.quantity));
+            formData.append('productId', parseInt(orderProduct.product.id));
+            formData.append('quantity', parseInt(orderProduct.quantity));
 
             await axios.post("http://localhost:8080/addProductToCart", formData, {withCredentials: true});
 
         },
-        removeProduct: async function(product){
+        removeOrderProduct: async function(orderProduct){
             var formData = new FormData();
 
-            formData.append('productId', parseInt(product.product.id));
+            formData.append('productId', parseInt(orderProduct.product.id));
 
             await axios.post("http://localhost:8080/removeProductFromCart", formData, {withCredentials: true});
 
-            this.products = this.products.filter(prod => prod.product.id !== product.product.id)
+            this.orderProductList = this.orderProductList.filter(prod => prod.product.id !== orderProduct.product.id)
 
         }
     },
     mounted(){
-        this.getProducts();
+        this.getOrderProductList();
     }
 })

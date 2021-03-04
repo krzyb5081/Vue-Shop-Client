@@ -12,7 +12,7 @@ Vue.component("shopping-template",{
                     <th>Description</th>
                     <th>Price</th>
                     <th>Available</th>
-                    <th>Buy</th>
+                    <th>Add to cart</th>
                 </tr>
                 
                 <tr v-for="product in products">
@@ -20,10 +20,8 @@ Vue.component("shopping-template",{
                     <td> {{product.description}} </td>
                     <td> {{product.price}} </td>
                     <td> {{product.quantityAvailable}} </td>
-                    
-                    <td>
-                        <add-to-cart v-bind:product-id="product.id"></add-to-cart>
-                    </td>
+
+                    <td> <button @click="addToCart(product, $event)">Add to cart</button> </td>
                 </tr>
             </table>
         </div>
@@ -32,8 +30,6 @@ Vue.component("shopping-template",{
         return {
             products: {},
             searchText: '',
-            productId: null,
-            quantity: null
         }
     },
     methods:{
@@ -50,38 +46,18 @@ Vue.component("shopping-template",{
             .then(resp => {this.products = resp.data});
 
             this.searchText = null;
+        },
+        addToCart: async function(product, event){
+            var formData = new FormData();
+            formData.append('productId', parseInt(product.id));
+            formData.append('quantity', 1);
+
+            await axios.post("http://localhost:8080/addProductToCart", formData, {withCredentials: true})
+
+            event.target.textContent = "Product added to cart";
         }
     },
-    components: {
-        'addToCart':{
-            data: function(){
-                return{
-                    quantity: null
-                }
-            },
-            props:{
-                productId: Number
-            },
-            template:`
-                <div>
-                    <button @click="addToCart()">Add to cart</button>
-                </div>
-            `,
-            methods:{
-                addToCart: async function(){
-                    var formData = new FormData();
-                    formData.append('productId', this.productId);
-                    formData.append('quantity', 1);
-
-                    await axios.post("http://localhost:8080/addProductToCart", formData, {withCredentials: true})
-                }
-            }
-        }
-    }
-    ,
     mounted(){
         this.getProducts();
     }
 })
-//<form action="#" th:action="@{/shopping}" method="post">
-//<form action="#" th:action="@{/addProductToCart}" method="post">

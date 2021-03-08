@@ -31,7 +31,7 @@ Vue.component('add-product-template',{
             formData.append('price', this.price);
             formData.append('quantityAvailable', this.quantityAvailable);
 
-            await axios.post("http://localhost:8080/addProduct", formData);
+            await axios.post("http://localhost:8080/addProduct", formData, {withCredentials: true});
             
             this.name = '';
             this.description = '';

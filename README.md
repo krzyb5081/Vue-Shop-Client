@@ -1,2 +1,2 @@
 # vue-shop-client
-Client side shop website for server side shop made with spring. Website made with bootstrap and vue.js
+Client side shop website for Java shop made with Spring. Website made with bootstrap and vue.js

@@ -31,7 +31,7 @@ export default defineComponent({
   <header-template></header-template>
     <div class="main" style="display: grid; grid-template: 100% / 20% auto;">
       <sidebar-template></sidebar-template>
-      <div class="content" style="background-color: #a5a5b5;">
+      <div class="content">
         <router-view></router-view>
       </div>
     </div>

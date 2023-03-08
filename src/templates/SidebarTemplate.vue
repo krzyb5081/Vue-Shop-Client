@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar" style="background-color: #6f6f8f; text-align: center;">
+    <div class="sidebar" style="text-align: center;">
         <br/>
         <router-link to="/shopping"><button class="btn btn-primary">Shopping</button></router-link><br/><br/>
         <router-link to="/addProduct"><button class="btn btn-primary">Add product</button></router-link><br/>

@@ -21,7 +21,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <H2>Feature under construction</H2>
+        <h3>Feature under construction</h3>
         <table>
             <tr>
                 <th>Id</th>
@@ -30,10 +30,11 @@ export default defineComponent({
             
             <tr v-for="order in orderList" v-bind:key="order.id">
                 <td>
-                    <input type = "text" v-model='order.id'>
+                    <span>{{ order.id }}</span>
+                    
                 </td>
                 <td>
-                    <input type = "text"  v-model='order.status'>
+                    <span>{{ order.status }}</span>
                 </td>
             </tr>
         </table>

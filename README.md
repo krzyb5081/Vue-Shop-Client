@@ -1,4 +1,16 @@
-# vue-shop-client
+# Vue-Shop-Client
+
+##About
+This is Node.js front end website working with my back end project [here](https://github.com/krzyb5081/Java-Spring-Shop). It is created mainly in learning purposes, my target was to learn JavaScript and Vue.js. It also helped me to learn how to use command line applications like git and npm.
+
+##Technologies
+-Vue
+-Vue Router
+-Vuex
+-Axios
+-Node.js
+-Vite
+-Node Package Manager
 
 ## Recommended IDE Setup
 

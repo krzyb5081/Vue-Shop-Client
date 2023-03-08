@@ -1,20 +1,7 @@
-Vue.component('add-product-template',{
-    template: `
-        <div>
-            <h1>add new product</h1>
-            <form v-on:submit.prevent="addProduct()">
-                Product name:<br>
-                <input type="text" v-model="name" placeholder="product name" /><br>
-                Description:<br>
-                <input type="text" v-model="description" placeholder="product description" /><br>
-                Price:<br>
-                <input type="number" step="0.01" v-model="price" placeholder="0" /><br>
-                Quantity available to sell:<br>
-                <input type="number" step="1" v-model="quantityAvailable" placeholder="0" /><br>
-                <input type="submit" value="Add product" />
-            </form>
-        </div>
-    `,
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
     data: function(){
         return{
             name: '',
@@ -41,5 +28,22 @@ Vue.component('add-product-template',{
             alert(this.name+" added to product list");
         }
     }
-
 })
+</script>
+
+<template>
+    <div>
+        <h1>add new product</h1>
+        <form v-on:submit.prevent="addProduct()">
+            Product name:<br>
+            <input type="text" v-model="name" placeholder="product name" /><br>
+            Description:<br>
+            <input type="text" v-model="description" placeholder="product description" /><br>
+            Price:<br>
+            <input type="number" step="0.01" v-model="price" placeholder="0" /><br>
+            Quantity available to sell:<br>
+            <input type="number" step="1" v-model="quantityAvailable" placeholder="0" /><br>
+            <input type="submit" value="Add product" />
+        </form>
+    </div>
+</template>

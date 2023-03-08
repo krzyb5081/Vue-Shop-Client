@@ -1,31 +1,7 @@
-Vue.component("shopping-template",{
-    template:`
-        <div>
-            <form @submit.prevent="search()">
-                <input type="text" v-model="searchText" name="searchText" placeholder="product name" />
-                <input type="submit" value="Search" />
-            </form>
+<script>
+import { defineComponent } from 'vue';
 
-            <table>
-                <tr>
-                    <th>Product name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Available</th>
-                    <th>Add to cart</th>
-                </tr>
-                
-                <tr v-for="product in products">
-                    <td> {{product.name}} </td>
-                    <td> {{product.description}} </td>
-                    <td> {{product.price}} </td>
-                    <td> {{product.quantityAvailable}} </td>
-
-                    <td> <button @click="addToCart(product, $event)">Add to cart</button> </td>
-                </tr>
-            </table>
-        </div>
-    `,
+export default defineComponent({
     data: function(){
         return {
             products: {},
@@ -61,3 +37,32 @@ Vue.component("shopping-template",{
         this.getProducts();
     }
 })
+</script>
+
+<template>
+    <div>
+            <form @submit.prevent="search()">
+                <input type="text" v-model="searchText" name="searchText" placeholder="product name" />
+                <input type="submit" value="Search" />
+            </form>
+
+            <table>
+                <tr>
+                    <th>Product name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Available</th>
+                    <th>Add to cart</th>
+                </tr>
+                
+                <tr v-for="product in products">
+                    <td> {{product.name}} </td>
+                    <td> {{product.description}} </td>
+                    <td> {{product.price}} </td>
+                    <td> {{product.quantityAvailable}} </td>
+
+                    <td> <button @click="addToCart(product, $event)">Add to cart</button> </td>
+                </tr>
+            </table>
+        </div>
+</template>

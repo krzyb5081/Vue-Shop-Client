@@ -1,35 +1,7 @@
-Vue.component("show-shopping-cart-template",{
-    template:`
-        <div>
-            <table>
-                <tr>
-                    <th>Product name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Available</th>
-                    <th>Amount wanted</th>
-                </tr>
-                
-                <tr v-for="orderProduct in orderProductList" v-bind:key="orderProduct.product.id">
-                    <td> {{orderProduct.product.name}} </td>
-                    <td> {{orderProduct.product.description}} </td>
-                    <td> {{orderProduct.product.price}} </td>
-                    <td> {{orderProduct.product.quantityAvailable}} </td>
-                    
-                    <td>
-                        <input type = "number" @change='changeQuantity(orderProduct)' v-model:value='orderProduct.quantity'>
-                        <button @click='removeOrderProduct(orderProduct)'>Remove</button>
-                    </td>
-                </tr>
-            </table>
-            <span v-if="$store.state.logged === true">Your money: {{user.money}}<br></span>
-            
-            <span v-else>To pay and make order you have to <router-link to="/login"><button class="btn btn-primary">Log in</button></router-link><br></span>
-            Order cost: {{orderCost}}<br>
-            <span v-if="$store.state.logged === true"><button @click="makeOrder()" class="btn btn-primary">Make order</button><br></span>
+<script>
+import { defineComponent } from 'vue';
 
-        </div>
-    `,
+export default defineComponent({
     data: function(){
         return {
             orderProductList: {},
@@ -48,13 +20,11 @@ Vue.component("show-shopping-cart-template",{
             }
         },
         getOrderProductList: async function(){
-            let response = await axios.get('http://localhost:8080/showShoppingCart', {withCredentials: true})
+            await axios.get('http://localhost:8080/showShoppingCart', {withCredentials: true})
             .then(resp => {this.orderProductList = resp.data});
         },
         getSessionUser: async function(){
-            if(this.$store.state.logged === true){
-                await axios.get('http://localhost:8080/getSessionUser', {withCredentials: true}).then(resp => {this.user = resp.data})
-            }
+            await axios.get('http://localhost:8080/getSessionUser', {withCredentials: true}).then(resp => {this.user = resp.data})
         },
         getOrderCost: async function(){
             await axios.get('http://localhost:8080/getOrderCost', {withCredentials: true}).then(resp => {this.orderCost = resp.data})
@@ -95,3 +65,36 @@ Vue.component("show-shopping-cart-template",{
         this.getOrderCost();
     }
 })
+</script>
+
+<template>
+    <div>
+        <table>
+            <tr>
+                <th>Product name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Available</th>
+                <th>Amount wanted</th>
+            </tr>
+            
+            <tr v-for="orderProduct in orderProductList" v-bind:key="orderProduct.product.id">
+                <td> {{orderProduct.product.name}} </td>
+                <td> {{orderProduct.product.description}} </td>
+                <td> {{orderProduct.product.price}} </td>
+                <td> {{orderProduct.product.quantityAvailable}} </td>
+                
+                <td>
+                    <input type = "number" @change='changeQuantity(orderProduct)' v-model='orderProduct.quantity'>
+                    <button @click='removeOrderProduct(orderProduct)'>Remove</button>
+                </td>
+            </tr>
+        </table>
+        <span v-if="$store.state.logged === true">Your money: {{user.money}}<br></span>
+        
+        <span v-else>To pay and make order you have to <router-link to="/login"><button class="btn btn-primary">Log in</button></router-link><br></span>
+        Order cost: {{orderCost}}<br>
+        <span v-if="$store.state.logged === true"><button @click="makeOrder()" class="btn btn-primary">Make order</button><br></span>
+
+    </div>
+</template>

@@ -1,42 +1,19 @@
-<html>
-    <head>
-        <meta charset="utf-8" lang="eng">
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-        <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
-        <script src="https://unpkg.com/vue-router@3.0.0/dist/vue-router.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    </head>
-    <body>
-        <noscript>
-            <h1>enable javascript to use website</h1>
-        </noscript>
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shop App</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.0/dist/vue-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app" style="width: 100%; height: 100%; display: grid; grid-template-rows: 15% auto 10%;">
+    </div>
 
-        <div id="app" style="width: 100%; height: 100%; display: grid; grid-template-rows: 15% auto 10%;">
-            <header-template></header-template>
-
-            <div class="main" style="display: grid; grid-template: 100% / 20% auto;">
-
-                <sidebar-template></sidebar-template>
-
-                <div class="content" style="background-color: #a5a5b5;">
-                    <router-view></router-view>
-                </div>
-            </div>
-
-            <footer-template></footer-template>
-            
-        </div>
-
-        
-        <script src="templates/register-user-template.js"></script>
-        <script src="templates/login-user-template.js"></script>
-        <script src="templates/show-products-template.js"></script>
-        <script src="templates/shopping-template.js"></script>
-        <script src="templates/add-product-template.js"></script>
-        <script src="templates/show-shopping-cart-template.js"></script>
-        <script src="templates/index-template.js"></script>
-        <script src="templates/main-templates.js"></script>
-        <script src="main.js"></script>
-    </body>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>

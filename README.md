@@ -23,6 +23,8 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
+Install Node.js and npm package manager
+
 ```sh
 npm install
 ```

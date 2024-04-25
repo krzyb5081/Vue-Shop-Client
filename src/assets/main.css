@@ -23,7 +23,7 @@ a,
 
 @media (min-width: 1024px) {
   body {
-    display: flex;
+    display: grid;
     place-items: center;
   }
 
@@ -33,3 +33,26 @@ a,
     padding: 0 2rem;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* i really don't like css (right now) :p */

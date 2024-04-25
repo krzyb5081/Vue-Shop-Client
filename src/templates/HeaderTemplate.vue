@@ -1,5 +1,5 @@
 <template>
-    <div class="header" style="display: grid; grid-template: 100% / 20% auto 20%;">
+    <div class="header" style="display: grid; grid-template: 100% / 20% auto 20%; background-color: blue;">
         <div>
             <router-link to="/">
                 <img style="height: 100%; width: 100%; object-fit: contain;" src="./img/binco-logo.png"/>

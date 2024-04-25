@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <div style="text-align: center;">
+        <div style="text-align: center; background-color: blueviolet;">
             Front-End and Back-End made by: krzyb5081<br>
             <a href="https://github.com/krzyb5081/" target="_blank">
                 <button class="btn btn-secondary">Github: krzyb5081</button>

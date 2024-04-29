@@ -6,12 +6,29 @@
   grid-template-columns: 1fr 1fr;
   padding: 0 2rem;
 
+  place-items: center;
   font-weight: normal;
 }
 
-body {
+.content {
+
+}
+
+.footer {
   display: grid;
-  place-items: center;
+}
+
+.header{
+  display: grid;
+  grid-pattern: 5% auto 10%;
+}
+
+.sidebar {
+  display: grid;
+}
+
+button {
+
 }
 
 a,
@@ -26,25 +43,3 @@ a,
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* i really don't like css (right now) :p */

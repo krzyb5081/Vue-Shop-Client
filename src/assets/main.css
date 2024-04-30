@@ -10,6 +10,11 @@
   font-weight: normal;
 }
 
+.container {
+  display: grid;
+  grid-pattern: auto / 15%, auto / auto;
+  
+}
 .content {
 
 }
@@ -28,7 +33,9 @@
 }
 
 button {
-
+  padding: 0.2%;
+  width: max;
+  height: auto;
 }
 
 a,

@@ -31,6 +31,8 @@
 
 .sidebar {
   display: grid;
+  text-align: center;
+  background-color: cadetblue;
 }
 
 button {

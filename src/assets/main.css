@@ -25,7 +25,8 @@
 
 .header{
   display: grid;
-  grid-pattern: 5% auto 10%;
+  grid-template: 20% auto 20%;
+  background-color: blue;"
 }
 
 .sidebar {
@@ -38,6 +39,19 @@ button {
   height: auto;
 }
 
+#logo {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;      
+}
+
+#header-buttons {
+  text-align: right;
+  margin: 10px;
+  padding: 10px;
+  display: grid;
+  grid-row: 30% auto;
+}
 a,
 .green {
   text-decoration: none;

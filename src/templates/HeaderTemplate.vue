@@ -2,10 +2,10 @@
     <div class="header">
         <div>
             <router-link to="/">
-                <img id="logo" src="./img/binco-logo.png"/>
+                <img id="header-logo" src="./img/binco-logo.png"/>
             </router-link>
         </div>
-        <div style="text-align: center; margin: 10px; padding: 10px">
+        <div class="header-welcome">
             <h3>Welcome to Binco clothing shop</h3>
         </div>
         <div id="header-buttons">

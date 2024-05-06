@@ -28,16 +28,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="container">
-    <header-template></header-template>
-    <div class="main" style="display: grid; grid-template: 100% / 20% auto;">
-      <sidebar-template></sidebar-template>
-      <div class="content">
-        <router-view></router-view>
-      </div>
+  <header-template></header-template>
+  <div class="main">
+    <sidebar-template></sidebar-template>
+    <div class="content">
+      <router-view></router-view>
     </div>
-    <footer-template></footer-template>
   </div>
+  <footer-template></footer-template>
 </template>
 
 <style scoped>

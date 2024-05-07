@@ -1,9 +1,7 @@
 @import './base.css';
 
 #app {
-  margin: 0 auto;
   display: grid;
-  padding: 0 2rem;
 
   place-items: center;
   font-weight: normal;
@@ -16,26 +14,12 @@
   background-color: yellowgreen;
 }
 
-.main {
-  display: grid;
-  grid-template-columns: 20vw auto;
-}
-
-.content {
-  width: 100%;
-  height: 100%;
-}
-
-.footer {
-  display: grid;
-  width: 100%;
-}
-
 .header{
   display: grid;
-  grid-template-columns: 20% auto 20%;
+  grid-template-columns: 20% 60% 20%;
   background-color: blue;
   width: 100%;
+  height: 100%;
 }
 
 #header-logo {
@@ -46,16 +30,24 @@
 
 .header-welcome {
   text-align: center;
-  margin: 10px;
-  padding: 10px;
 }
 
 #header-buttons {
   text-align: right;
-  margin: 10px;
-  padding: 10px;
   display: grid;
-  grid-row: 30% auto;
+  grid-template-rows: 30% auto;
+  grid-template-columns: 50% 50%;
+}
+
+
+.main {
+  display: grid;
+  grid-template-columns: 20vw 80vw;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
 }
 
 .sidebar {
@@ -65,8 +57,11 @@
   height: 100%;
 }
 
-button {
-  padding: 0.2%;
-  width: max;
-  height: auto;
+.footer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  text-align: center;
+  background-color: blueviolet;
+  width: 100%;
+  height: 100%;
 }

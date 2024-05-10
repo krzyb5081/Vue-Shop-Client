@@ -30,10 +30,12 @@ export default defineComponent({
 <template>
   <header-template></header-template>
   <div class="main">
+    <div class"row">
     <sidebar-template></sidebar-template>
     <div class="content">
       <router-view></router-view>
     </div>
+  </div>
   </div>
   <footer-template></footer-template>
 </template>

@@ -42,15 +42,15 @@ export default defineComponent({
                 <h1 v-if='loginsuccess == ""'>Log in</h1>
                 <h1 v-if='loginsuccess == "loginsuccess"'>Logged in successfully</h1>
                 <h1 v-if='loginsuccess == "loginfail"'>Login fail</h1>
-                <form @submit.prevent='login()'>
+                <form class="form-group" @submit.prevent='login()'>
                     User name:<br>
-                    <input type="text" v-model="userName"><br>
+                    <input type="text" class="form-control" v-model="userName"><br>
                     Password:<br>
-                    <input type="password" v-model="password"><br>
-                    <button class="btn btn-primary">Log in</button>
+                    <input type="password" class="form-control" v-model="password"><br>
+                    <input type="submit" value="Log in" class="form-control btn btn-primary" />
                 </form>
                 You don't have account?<br>
-                <router-link to="/register"><button class="btn btn-primary">Register</button></router-link>
+                <router-link to="/register"><button class="btn btn-primary">Sign in</button></router-link>
             </div>
             <h1 v-else>You are logged in as: {{$store.state.userName}}</h1>
            

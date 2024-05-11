@@ -37,15 +37,15 @@ export default defineComponent({
 <template>
     <div>
         <div v-if="$store.state.logged === false">
-            <h1 v-if='registersuccess == ""'>Register</h1>
+            <h1 v-if='registersuccess == ""'>Sign in</h1>
             <h1 v-if='registersuccess == "registersuccess"'>Registered successfully</h1>
             <h1 v-if='registersuccess == "registerfail"'>Register fail</h1>
-            <form @submit.prevent='register()'>
+            <form class="form-group" @submit.prevent='register()'>
                 User name:<br>
-                <input type="text" v-model="userName"><br>
+                <input type="text" class="form-control" v-model="userName"><br>
                 Password:<br>
-                <input type="password" v-model="password"><br>
-                <button class="btn btn-primary">Register</button>
+                <input type="password" class="form-control" v-model="password"><br>
+                <input type="submit" value="Sign in" class="form-control btn btn-primary" />
             </form>
             You already have account?<br>
             <router-link to="/login"><button class="btn btn-primary">Log in</button></router-link>

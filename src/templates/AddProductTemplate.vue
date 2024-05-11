@@ -34,16 +34,16 @@ export default defineComponent({
 <template>
     <div>
         <h1>add new product</h1>
-        <form v-on:submit.prevent="addProduct()">
+        <form class="form-group" v-on:submit.prevent="addProduct()">
             Product name:<br>
-            <input type="text" v-model="name" placeholder="product name" /><br>
+            <input type="text" v-model="name" placeholder="product name" class="form-control" /><br>
             Description:<br>
-            <input type="text" v-model="description" placeholder="product description" /><br>
+            <input type="text" v-model="description" placeholder="product description" class="form-control" /><br>
             Price:<br>
-            <input type="number" step="0.01" v-model="price" placeholder="0" /><br>
+            <input type="number" step="0.01" v-model="price" placeholder="0" class="form-control" /><br>
             Quantity available to sell:<br>
-            <input type="number" step="1" v-model="quantityAvailable" placeholder="0" /><br>
-            <input type="submit" value="Add product" />
+            <input type="number" step="1" v-model="quantityAvailable" placeholder="0" class="form-control" /><br>
+            <input type="submit" value="Add product" class="form-control btn btn-primary" />
         </form>
     </div>
 </template>

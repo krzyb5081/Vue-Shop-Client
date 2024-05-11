@@ -29,14 +29,12 @@ export default defineComponent({
 
 <template>
   <header-template></header-template>
-  <div class="main">
-    <div class="row">
-      <div class="col-sm-4">
-        <sidebar-template></sidebar-template>
-      </div>
-      <div class="col-sm-40">
-        <router-view></router-view>
-      </div>
+  <div class="row w-100">
+    <div class="col-sm-4">
+      <sidebar-template></sidebar-template>
+    </div>
+    <div class="col-sm-4">
+      <router-view></router-view>
     </div>
   </div>
   <footer-template></footer-template>

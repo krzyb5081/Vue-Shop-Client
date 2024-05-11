@@ -5,5 +5,6 @@
         <router-link to="/addProduct"><button class="btn btn-primary btn-lg btn-block">Add product</button></router-link><br/>
         <router-link to="/showProducts"><button class="btn btn-primary btn-lg btn-block">Show products</button></router-link><br/>
         <router-link to="/showOrders"><button class="btn btn-primary btn-lg btn-block">Show orders</button></router-link><br/>
+        <br/><br/><br/><br/><br/><br/>
     </div>
 </template>

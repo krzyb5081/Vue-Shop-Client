@@ -41,28 +41,31 @@ export default defineComponent({
 
 <template>
     <div>
-            <form @submit.prevent="search()">
-                <input type="text" v-model="searchText" name="searchText" placeholder="product name" />
-                <input type="submit" value="Search" />
+            <form class="form-group" @submit.prevent="search()">
+                <input class="form-control" type="text" v-model="searchText" name="searchText" placeholder="product name" />
+                <input class="form-control btn btn-primary" type="submit" value="Search" />
             </form>
 
-            <table>
-                <tr>
-                    <th>Product name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Available</th>
-                    <th>Add to cart</th>
-                </tr>
-                
-                <tr v-for="product in products">
-                    <td> {{product.name}} </td>
-                    <td> {{product.description}} </td>
-                    <td> {{product.price}} </td>
-                    <td> {{product.quantityAvailable}} </td>
-
-                    <td> <button @click="addToCart(product, $event)">Add to cart</button> </td>
-                </tr>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Product name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Available</th>
+                        <th scope="col">Add to cart</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="product in products">
+                        <td> {{product.name}} </td>
+                        <td> {{product.description}} </td>
+                        <td> {{product.price}} </td>
+                        <td> {{product.quantityAvailable}} </td>
+                        <td> <button class="btn btn-success" @click="addToCart(product, $event)">Add to cart</button> </td>
+                    </tr>
+                </tbody>
             </table>
+
         </div>
 </template>

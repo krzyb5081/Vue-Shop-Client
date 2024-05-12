@@ -33,7 +33,7 @@ export default defineComponent({
     <div class="col-sm-4">
       <sidebar-template></sidebar-template>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-8">
       <router-view></router-view>
     </div>
   </div>

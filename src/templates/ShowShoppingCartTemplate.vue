@@ -69,32 +69,39 @@ export default defineComponent({
 
 <template>
     <div>
-        <table>
-            <tr>
-                <th>Product name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Available</th>
-                <th>Amount wanted</th>
-            </tr>
-            
-            <tr v-for="orderProduct in orderProductList" v-bind:key="orderProduct.product.id">
-                <td> {{orderProduct.product.name}} </td>
-                <td> {{orderProduct.product.description}} </td>
-                <td> {{orderProduct.product.price}} </td>
-                <td> {{orderProduct.product.quantityAvailable}} </td>
-                
-                <td>
-                    <input type = "number" @change='changeQuantity(orderProduct)' v-model='orderProduct.quantity'>
-                    <button @click='removeOrderProduct(orderProduct)'>Remove</button>
-                </td>
-            </tr>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Product name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Available</th>
+                    <th scope="col">Amount wanted</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="orderProduct in orderProductList" v-bind:key="orderProduct.product.id">
+                    <td> {{orderProduct.product.name}} </td>
+                    <td> {{orderProduct.product.description}} </td>
+                    <td> {{orderProduct.product.price}} </td>
+                    <td> {{orderProduct.product.quantityAvailable}} </td>
+                    
+                    <td>
+                        <input class="form-control" type="number" @change='changeQuantity(orderProduct)' v-model='orderProduct.quantity'>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" @click='removeOrderProduct(orderProduct)'>Remove</button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
-        <span v-if="$store.state.logged === true">Your money: {{user.money}}<br></span>
+        <span v-if="$store.state.logged === true"><b>Your money:</b> {{user.money}}<br/></span>
         
-        <span v-else>To pay and make order you have to <router-link to="/login"><button class="btn btn-primary">Log in</button></router-link><br></span>
-        Order cost: {{orderCost}}<br>
-        <span v-if="$store.state.logged === true"><button @click="makeOrder()" class="btn btn-primary">Make order</button><br></span>
+        <span v-else>To pay and make order you have to <router-link to="/login"><button class="btn btn-primary">Log in</button></router-link><br/></span>
+        <b>Order cost:</b> {{orderCost}}<br/>
+        <br/>
+        <span v-if="$store.state.logged === true"><button @click="makeOrder()" class="btn btn-primary">Make order</button><br/></span>
 
     </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div class="jumbotron text-center bg-dark">
+    <header class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top text-center bg-dark">
         <div class="row d-flex justify-content-between">
             <div class="p-1 col-sm-4">
                 <router-link to="/">
@@ -18,5 +18,5 @@
                 <router-link to="/showShoppingCart"><button class="btn btn-primary btn-lg btn-block">Show cart</button></router-link><br/>
             </div>
         </div>
-    </div>
+    </headed>
 </template>

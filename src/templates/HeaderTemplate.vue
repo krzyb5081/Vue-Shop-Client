@@ -18,5 +18,5 @@
                 <router-link to="/showShoppingCart"><button class="btn btn-primary btn-lg btn-block">Show cart</button></router-link><br/>
             </div>
         </div>
-    </headed>
+    </header>
 </template>

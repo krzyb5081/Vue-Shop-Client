@@ -37,25 +37,25 @@ export default defineComponent({
 
 <template>
     <div>
-        <table>
+        <table class="table table-dark">
             <tr>
-                <th>Product name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Available</th>
+                <th scope="col">Product name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Available</th>
             </tr>
             <tr v-for="product in productList" v-bind:key="product.id">
                 <td>
-                    <input type = "text" @change='changeProperties(product)' v-model='product.name'>
+                    <input class="form-control" type="text" @change='changeProperties(product)' v-model='product.name'>
                 </td>
                 <td>
-                    <input type = "text" @change='changeProperties(product)' v-model='product.description'>
+                    <input class="form-control" type="text" @change='changeProperties(product)' v-model='product.description'>
                 </td>
                 <td>
-                    <input type = "number" step="0.01" @change='changeProperties(product)' v-model='product.price'>
+                    <input class="form-control" type="number" step="0.01" @change='changeProperties(product)' v-model='product.price'>
                 </td>
                 <td>
-                    <input type = "number" @change='changeProperties(product)' v-model='product.quantityAvailable'>
+                    <input class="form-control" type="number" @change='changeProperties(product)' v-model='product.quantityAvailable'>
                 </td>
             </tr>
         </table>

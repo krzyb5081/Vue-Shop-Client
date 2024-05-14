@@ -42,8 +42,8 @@ export default defineComponent({
 <template>
     <div>
             <form class="form-group" @submit.prevent="search()">
-                <input class="form-control" type="text" v-model="searchText" name="searchText" placeholder="product name" />
-                <input class="form-control btn btn-primary" type="submit" value="Search" />
+                <input class="form-control" type="text" v-model="searchText" name="searchText" placeholder="What are you looking for?" />
+                <input class="form-control btn btn-success" type="submit" value="Search" />
             </form>
 
             <table class="table table-dark">
